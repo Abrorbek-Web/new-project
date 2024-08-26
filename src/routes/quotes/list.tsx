@@ -32,6 +32,7 @@ import { useUsersSelect } from "@/hooks/useUsersSelect";
 import { currencyNumber } from "@/utilities";
 
 import { QUOTES_TABLE_QUERY } from "./queries";
+import { useParams } from "react-router-dom";
 
 type Quote = GetFieldsFromList<QuotesTableQuery>;
 
@@ -52,6 +53,8 @@ const statusOptions: { label: string; value: QuoteStatus }[] = [
 
 export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
   const screens = Grid.useBreakpoint();
+  const { id } = useParams();
+  console.log(id);
 
   const {
     tableProps,
@@ -96,6 +99,7 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
       gqlQuery: QUOTES_TABLE_QUERY,
     },
   });
+  const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const { selectProps: selectPropsCompanies } = useCompaniesSelect();
 
@@ -110,6 +114,7 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className="page-container">
+      <h3>{id}</h3>
       <List
         breadcrumb={false}
         headerButtons={() => {
@@ -163,16 +168,23 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
           rowKey="id"
         >
           <Table.Column
-            dataIndex="title"
-            title="Title"
-            defaultFilteredValue={getDefaultFilter("title", filters)}
-            filterDropdown={(props) => (
-              <FilterDropdown {...props}>
-                <Input placeholder="Search Name" />
-              </FilterDropdown>
-            )}
+            dataIndex="total"
+            title="Report №"
+            sorter
+            render={(_, __, index) => {
+              return (
+                <Text
+                  style={{
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {currencyNumber(index + 1)}{" "}
+                  {/* Bu yerda index + 1 ishlatilmoqda */}
+                </Text>
+              );
+            }}
           />
-          <Table.Column<Quote>
+          {/* <Table.Column<Quote>
             dataIndex={["company", "id"]}
             title="Company"
             defaultFilteredValue={getDefaultFilter("company.id", filters, "in")}
@@ -199,8 +211,8 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
                 </Space>
               );
             }}
-          />
-          <Table.Column
+          /> */}
+          {/* <Table.Column
             dataIndex="total"
             title="Total Amount"
             sorter
@@ -215,8 +227,8 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
                 </Text>
               );
             }}
-          />
-          <Table.Column<Quote>
+          /> */}
+          {/* <Table.Column<Quote>
             dataIndex="status"
             title="Stage"
             defaultFilteredValue={getDefaultFilter("status", filters, "in")}
@@ -233,8 +245,8 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
             render={(value) => {
               return <QuoteStatusTag status={value} />;
             }}
-          />
-          <Table.Column<Quote>
+          /> */}
+          {/* <Table.Column<Quote>
             dataIndex={["salesOwner", "id"]}
             title="Participants"
             filterDropdown={(props) => {
@@ -256,14 +268,60 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
                 />
               );
             }}
-          />
+          /> */}
           <Table.Column<Quote>
             dataIndex={"createdAt"}
-            title="Created at"
+            title="Created"
             sorter
             defaultSortOrder={getDefaultSortOrder("createdAt", sorters)}
             render={(value) => {
               return <Text>{dayjs(value).fromNow()}</Text>;
+            }}
+          />
+          <Table.Column<Quote>
+            dataIndex={["company", "id"]}
+            title="Responsible"
+            defaultFilteredValue={getDefaultFilter("company.id", filters, "in")}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Select
+                  placeholder="Search Company"
+                  style={{ width: 220 }}
+                  {...selectPropsCompanies}
+                />
+              </FilterDropdown>
+            )}
+            render={(_, record) => {
+              return (
+                <Space>
+                  {/* <CustomAvatar
+                    shape="square"
+                    name={record.company.name}
+                    src={record.company.avatarUrl}
+                  /> */}
+                  <Text style={{ whiteSpace: "nowrap" }}>
+                    {record.company.name}
+                  </Text>
+                </Space>
+              );
+            }}
+          />
+          <Table.Column<Quote>
+            dataIndex="status"
+            title="Status"
+            defaultFilteredValue={getDefaultFilter("status", filters, "in")}
+            filterDropdown={(props) => (
+              <FilterDropdown {...props}>
+                <Select
+                  style={{ width: "200px" }}
+                  mode="multiple"
+                  placeholder="Select Stage"
+                  options={statusOptions}
+                />
+              </FilterDropdown>
+            )}
+            render={(value) => {
+              return <QuoteStatusTag status={value} />;
             }}
           />
           <Table.Column<Quote>

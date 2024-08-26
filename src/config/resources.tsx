@@ -20,22 +20,22 @@ export const resources: IResourceItem[] = [
       icon: <DashboardOutlined />,
     },
   },
-  {
-    name: "events",
-    list: "/calendar",
-    create: "/calendar/create",
-    edit: "/calendar/edit/:id",
-    show: "/calendar/show/:id",
-    meta: {
-      label: "Calendar",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <CalendarOutlined />,
-    },
-  },
+  // {
+  //   name: "events",
+  //   list: "/calendar",
+  //   create: "/calendar/create",
+  //   edit: "/calendar/edit/:id",
+  //   show: "/calendar/show/:id",
+  //   meta: {
+  //     label: "Calendar",
+  //     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+  //     icon: <CalendarOutlined />,
+  //   },
+  // },
   {
     name: "scrumboard",
     meta: {
-      label: "Scrumboard",
+      label: "Reports",
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon: <ProjectOutlined />,
     },
@@ -43,30 +43,86 @@ export const resources: IResourceItem[] = [
 
   {
     name: "tasks",
-    list: "/scrumboard/kanban",
-    create: "/scrumboard/kanban/create",
-    edit: "/scrumboard/kanban/edit/:id",
+    list: "/quotes/Engineering Progress Report & 6-Month Look-Ahead Forecast",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
     meta: {
-      label: "Project Kanban",
+      label: "Engineering",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "task",
+    list: "/quotes/Procurement Progress Report & Schedule",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Procurement",
       parent: "scrumboard",
     },
   },
   {
     name: "taskStages",
-    create: "/scrumboard/kanban/stages/create",
-    edit: "/scrumboard/kanban/stages/edit/:id",
-    list: "/scrumboard/kanban",
+    list: "/quotes/Bulk Material Procurement Progress Report & Look-Ahead Forecast",
+    // create: "/scrumboard/kanban/stages/create",
+    // edit: "/scrumboard/kanban/stages/edit/:id",
     meta: {
-      hide: true,
+      label: "Construction",
+      parent: "scrumboard",
     },
   },
   {
     name: "deals",
-    list: "/scrumboard/sales",
-    create: "/scrumboard/sales/create",
-    edit: "/scrumboard/sales/edit/:id",
+    list: "/quotes/Construction Progress Report & 6-Month Look-Ahead Forecast",
+    create: "/contacts/create",
+    edit: "/contacts/edit/:id",
+    show: "/contacts/show/:id",
     meta: {
-      label: "Sales Pipeline",
+      label: "Budget",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "deal",
+    list: "/quotes/Subcontracts Status Report",
+    create: "/contacts/create",
+    edit: "/contacts/edit/:id",
+    show: "/contacts/show/:id",
+    meta: {
+      label: "Subcontract",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "dea",
+    list: "/quotes/Manpower Status Report & 12-Month Look-Ahead Forecast",
+    create: "/contacts/create",
+    edit: "/contacts/edit/:id",
+    show: "/contacts/show/:id",
+    meta: {
+      label: "Manpower",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "de",
+    list: "/quotes/Machinery Status Report & 12-Month Look-Ahead Forecast",
+    create: "/contacts/create",
+    edit: "/contacts/edit/:id",
+    show: "/contacts/show/:id",
+    meta: {
+      label: "Machinery",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "d",
+    list: "/quotes/Cost & Cash Outflow Forecast",
+    create: "/contacts/create",
+    edit: "/contacts/edit/:id",
+    show: "/contacts/show/:id",
+    meta: {
+      label: "Bulk Materials",
       parent: "scrumboard",
     },
   },
@@ -87,72 +143,61 @@ export const resources: IResourceItem[] = [
       hide: true,
     },
   },
-  {
-    name: "companies",
-    list: "/companies",
-    show: "/companies/:id",
-    create: "/companies/create",
-    edit: "/companies/edit/:id",
-    meta: {
-      label: "Companies",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <ShopOutlined />,
-    },
-  },
-  {
-    name: "companies",
-    identifier: "sales-companies",
-    create: "/scrumboard/sales/create/company/create",
-    meta: {
-      hide: true,
-    },
-  },
-  {
-    name: "contacts",
-    list: "/contacts",
-    create: "/contacts/create",
-    edit: "/contacts/edit/:id",
-    show: "/contacts/show/:id",
-    meta: {
-      label: "Contacts",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <TeamOutlined />,
-    },
-  },
-  {
-    name: "quotes",
-    list: "/quotes",
-    create: "/quotes/create",
-    edit: "/quotes/edit/:id",
-    show: "/quotes/show/:id",
-    meta: {
-      label: "Quotes",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <ContainerOutlined />,
-    },
-  },
-  {
-    name: "administration",
-    meta: {
-      label: "Administration",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <CrownOutlined />,
-    },
-  },
-  {
-    name: "settings",
-    list: "/administration/settings",
-    meta: {
-      label: "Settings",
-      parent: "administration",
-    },
-  },
-  {
-    name: "audits",
-    list: "/administration/audit-log",
-    meta: {
-      label: "Audit Log",
-      parent: "administration",
-    },
-  },
+
+  // {
+  //   name: "companies",
+  //   identifier: "sales-companies",
+  //   create: "/scrumboard/sales/create/company/create",
+  //   meta: {
+  //     hide: true,
+  //   },
+  // },
+  // {
+  //   name: "contacts",
+  //   list: "/contacts",
+  //   create: "/contacts/create",
+  //   edit: "/contacts/edit/:id",
+  //   show: "/contacts/show/:id",
+  //   meta: {
+  //     label: "Contacts",
+  //     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+  //     icon: <TeamOutlined />,
+  //   },
+  // },
+  // {
+  //   name: "quotes",
+  //   list: "/quotes",
+  //   create: "/quotes/create",
+  //   edit: "/quotes/edit/:id",
+  //   show: "/quotes/show/:id",
+  //   meta: {
+  //     label: "Quotes",
+  //     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+  //     icon: <ContainerOutlined />,
+  //   },
+  // },
+  // {
+  //   name: "administration",
+  //   meta: {
+  //     label: "Administration",
+  //     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+  //     icon: <CrownOutlined />,
+  //   },
+  // },
+  // {
+  //   name: "settings",
+  //   list: "/administration/settings",
+  //   meta: {
+  //     label: "Settings",
+  //     parent: "administration",
+  //   },
+  // },
+  // {
+  //   name: "audits",
+  //   list: "/administration/audit-log",
+  //   meta: {
+  //     label: "Audit Log",
+  //     parent: "administration",
+  //   },
+  // },
 ];
