@@ -20,6 +20,7 @@ export const resources: IResourceItem[] = [
       icon: <DashboardOutlined />,
     },
   },
+
   // {
   //   name: "events",
   //   list: "/calendar",
@@ -200,4 +201,22 @@ export const resources: IResourceItem[] = [
   //     parent: "administration",
   //   },
   // },
+  {
+    name: "register",
+    list: "/register",
+    meta: {
+      label: "Register",
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon: <DashboardOutlined />,
+    },
+  },
+  {
+    name: "Login",
+    list: "/login",
+    meta: {
+      label: "Login",
+      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
+      icon: <DashboardOutlined />,
+    },
+  },
 ];

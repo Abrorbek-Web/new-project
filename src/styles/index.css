@@ -202,7 +202,7 @@ a:hover {
 
 .login-section {
   background-color: #f9fafb;
-  background-image: url("./../assets/bg-image.jpg");
+  background-image: url("../assets/bg-img.png");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
