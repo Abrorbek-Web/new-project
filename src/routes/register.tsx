@@ -2,7 +2,6 @@ import { useState, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import bgImg from "./../assets/bg-img.png";
 import { register } from "../services/authService";
 import Select, { SingleValue } from "react-select";
 
@@ -51,7 +50,7 @@ function Register() {
     register(user)
       .then((res) => {
         toast.success("Successfully registered!");
-        navigate("/login");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
