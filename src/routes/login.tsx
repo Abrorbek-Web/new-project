@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import bgImg from "./../assets/bg-image.jpg";
 import { useDispatch } from "react-redux";
 import { signIn, signOut } from "../slices/authSlice";
 import { login } from "../services/authService";
@@ -13,7 +12,7 @@ export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShowingPassword, setIsShowingPassword] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,7 +24,7 @@ export function Login() {
     login(email, password)
       .then((res) => {
         setIsLoading(false);
-        // dispatch(signIn(res));
+        dispatch(signIn(res));
         toast.success("Login successful!");
         navigate("/");
       })
@@ -36,7 +35,7 @@ export function Login() {
         if (err.response?.data?.error === "Awaiting confirmation") {
           navigate("/waiting");
         } else {
-          // dispatch(signOut());
+          dispatch(signOut());
           toast.error("Login failed. Please try again.");
         }
       });

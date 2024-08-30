@@ -54,7 +54,6 @@ const statusOptions: { label: string; value: QuoteStatus }[] = [
 export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
   const screens = Grid.useBreakpoint();
   const { id } = useParams();
-  console.log(id);
 
   const {
     tableProps,
@@ -291,7 +290,7 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
                 />
               </FilterDropdown>
             )}
-            render={(_, record) => {
+            render={(_, item) => {
               return (
                 <Space>
                   {/* <CustomAvatar
@@ -300,7 +299,7 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
                     src={record.company.avatarUrl}
                   /> */}
                   <Text style={{ whiteSpace: "nowrap" }}>
-                    {record.company.name}
+                    {item.company.name}
                   </Text>
                 </Space>
               );

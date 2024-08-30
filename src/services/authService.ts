@@ -1,9 +1,6 @@
-import axios from "axios";
 import axiosInstance from "./axios-instance";
 import store from "../store";
 import { signOut } from "../slices/authSlice";
-
-const baseApi = import.meta.env.VITE_API_KEY;
 
 interface User {
   email: string;
@@ -16,7 +13,10 @@ interface User {
 
 export const login = async (email: string, password: string): Promise<any> => {
   try {
-    const response = await axios.post(`${baseApi}/login/`, { email, password });
+    const response = await axiosInstance.post(`/login/`, {
+      email,
+      password,
+    });
     return response.data;
   } catch (err: any) {
     console.log(err, "xxx");
@@ -27,9 +27,11 @@ export const login = async (email: string, password: string): Promise<any> => {
 
 export const register = async (user: User): Promise<any> => {
   try {
-    const response = await axios.post(`${baseApi}/register/`, user);
+    const response = await axiosInstance.post(`/register/`, user);
     return response.data;
   } catch (err: any) {
+    console.log(err, "Salom");
+
     throw err;
   }
 };
@@ -47,7 +49,9 @@ export const logOut = async (
   };
 
   try {
-    const response = await axios.post(`${baseApi}/logout/`, data, { headers });
+    const response = await axiosInstance.post(`/logout/`, data, {
+      headers,
+    });
     return response.data;
   } catch (err: any) {
     store.dispatch(signOut());

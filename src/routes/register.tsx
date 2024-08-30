@@ -4,12 +4,14 @@ import { toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { register } from "../services/authService";
 import Select, { SingleValue } from "react-select";
+import { useDispatch } from "react-redux";
+import { signIn } from "@/slices/authSlice";
 
 interface PositionOption {
   value: string;
   label: string;
 }
-
+const dispatch = useDispatch();
 const positionOptions: PositionOption[] = [
   { value: "Project Manager", label: "Project Manager" },
   { value: "Project Engineer Manager", label: "Project Engineer Manager" },
@@ -49,6 +51,7 @@ function Register() {
 
     register(user)
       .then((res) => {
+        dispatch(signIn(res));
         toast.success("Successfully registered!");
         navigate("/");
       })
