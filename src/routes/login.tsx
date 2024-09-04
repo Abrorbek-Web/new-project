@@ -7,6 +7,7 @@ import { signIn, signOut } from "../slices/authSlice";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
+import ArticleService from "@/services/articles";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -23,8 +24,10 @@ export function Login() {
 
     login(email, password)
       .then((res) => {
+        console.log(res);
         setIsLoading(false);
-        dispatch(signIn(res));
+        // dispatch(signIn(res));
+        ArticleService.getProject();
         toast.success("Login successful!");
         navigate("/");
       })

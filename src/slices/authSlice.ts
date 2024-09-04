@@ -11,15 +11,19 @@ import {
 const accessToken = getAccessToken();
 const refreshToken = getRefreshToken();
 const ADMIN_KEY = "isAdmin";
-const isAdmin = localStorage.getItem(ADMIN_KEY);
+const isAdmin = localStorage.getItem(ADMIN_KEY) === "true";
 
 interface AuthState {
   accessToken: string | null;
+  isAdmin: boolean | null;
   refreshToken: string | null;
-  isAdmin: string | null;
 }
 
-const initialState: AuthState = { accessToken, refreshToken, isAdmin };
+const initialState: AuthState = {
+  accessToken,
+  isAdmin: !!isAdmin,
+  refreshToken,
+};
 
 const authSlice = createSlice({
   name: "auth",
@@ -30,15 +34,18 @@ const authSlice = createSlice({
       action: PayloadAction<{
         refresh: string;
         access: string;
-        is_admin: string | null;
+        is_admin: boolean;
       }>
     ) => {
       const { refresh, access, is_admin } = action.payload;
-      saveAccessToken(access);
-      saveRefreshToken(refresh);
-
+      // saveAccessToken(access);
+      // saveRefreshToken(refresh);
+      saveAccessToken();
+      saveRefreshToken();
       if (is_admin) {
-        localStorage.setItem(ADMIN_KEY, is_admin);
+        localStorage.setItem(ADMIN_KEY, "true");
+      } else {
+        localStorage.removeItem(ADMIN_KEY);
       }
 
       return { accessToken: access, refreshToken: refresh, isAdmin: is_admin };
@@ -47,7 +54,7 @@ const authSlice = createSlice({
       deteleAccessToken();
       deteleRefreshToken();
       localStorage.removeItem(ADMIN_KEY);
-      return { accessToken: null, refreshToken: null, isAdmin: null };
+      return { accessToken: null, refreshToken: null, isAdmin: false };
     },
   },
 });
