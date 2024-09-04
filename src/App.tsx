@@ -1,6 +1,7 @@
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
 import { ErrorComponent, useNotificationProvider } from "@refinedev/antd";
-import { Authenticated, IResourceItem, Refine } from "@refinedev/core";
+import { Authenticated, Refine, IResourceItem } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import routerProvider, {
   CatchAllNavigate,
@@ -8,10 +9,12 @@ import routerProvider, {
   NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+
 import { App as AntdApp, ConfigProvider } from "antd";
 
-import { themeConfig } from "@/config";
+import { resources, themeConfig } from "@/config";
 import { authProvider, dataProvider, liveProvider } from "@/providers";
+
 import { AlgoliaSearchWrapper, FullScreenLoading, Layout } from "./components";
 import { useAutoLoginForDemo } from "./hooks";
 import { AuditLogPage, SettingsPage } from "./routes/administration";
@@ -57,28 +60,19 @@ import {
   SalesPage,
 } from "./routes/scrumboard/sales";
 import { UpdatePasswordPage } from "./routes/update-password";
+
+import { useState, useEffect } from "react";
+
 import "./utilities/init-dayjs";
 import "@refinedev/antd/dist/reset.css";
 import "./styles/antd.css";
 import "./styles/fc.css";
 import "./styles/index.css";
-
-import React, { useEffect, useState } from "react";
-import ArticleService from "@/services/articles";
-import {
-  CalendarOutlined,
-  ContainerOutlined,
-  CrownOutlined,
-  DashboardOutlined,
-  ProjectOutlined,
-  ShopOutlined,
-  TeamOutlined,
-} from "@ant-design/icons";
+import ArticleService from "./services/articles";
 
 const App: React.FC = () => {
-  const { loading: demoLoading } = useAutoLoginForDemo();
   const [resources, setResources] = useState<IResourceItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { loading } = useAutoLoginForDemo();
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -111,11 +105,9 @@ const App: React.FC = () => {
               meta: {
                 label: item._type,
                 parent: "scrumboard",
-                // icon: item.icon || <ContainerOutlined />,
               },
             })),
           ];
-
           setResources(resourceItems);
         } else {
           console.error("API data is not an array:", apiData);
@@ -123,19 +115,21 @@ const App: React.FC = () => {
       } catch (error) {
         console.error("Failed to fetch resources:", error);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
     fetchResources();
   }, []);
+
+  // if (loading) {
+  //   return <FullScreenLoading />;
+  // }
   console.log(resources);
 
-  if (demoLoading || loading) {
-    return <FullScreenLoading />;
-  }
-
-  return (
+  return resources.length === 0 ? (
+    <FullScreenLoading />
+  ) : (
     <AlgoliaSearchWrapper>
       <BrowserRouter>
         <ConfigProvider theme={themeConfig}>
@@ -156,7 +150,10 @@ const App: React.FC = () => {
               <Routes>
                 <Route
                   element={
-                    <Authenticated key="authenticated-layout">
+                    <Authenticated
+                      key="authenticated-layout"
+                      // fallback={<CatchAllNavigate to="/login" />}
+                    >
                       <Layout>
                         <Outlet />
                       </Layout>
@@ -271,8 +268,7 @@ const App: React.FC = () => {
                       />
                     </Route>
                   </Route>
-                  <Route path="/quotes/:id" element={<QuotesShowPage />} />
-                  {/* <Route
+                  <Route
                     path="/quotes/:id"
                     element={
                       <QuotesListPage>
@@ -306,7 +302,7 @@ const App: React.FC = () => {
                         element={<CompanyCreatePage isOverModal />}
                       />
                     </Route>
-                  </Route> */}
+                  </Route>
                   <Route path="/quotes/show/:id" element={<QuotesShowPage />} />
                   <Route path="/administration" element={<Outlet />}>
                     <Route path="settings" element={<SettingsPage />} />

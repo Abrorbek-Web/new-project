@@ -30,8 +30,6 @@ const ArticleService = {
     saveAccessToken();
     saveRefreshToken();
     const { data } = await axiosInstance.get<Report>(`/report`);
-    // console.log(data);
-
     return data;
   },
 
