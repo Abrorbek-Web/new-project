@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useCustom } from "@refinedev/core";
 
@@ -22,6 +22,12 @@ export const DashboardPage: React.FC = () => {
     url: "",
     method: "get",
     meta: { gqlQuery: DASHBOARD_TOTAL_COUNTS_QUERY },
+  });
+  useEffect(() => {
+    localStorage.setItem(
+      "token",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MjY4MDQyLCJpYXQiOjE3MjUwMDg4NDIsImp0aSI6ImM1ZjdhMDNjNzg5NjRlODhiMWU5ODFjZWRmNzQ3MjcwIiwidXNlcl9pZCI6M30.-eWE0LVK6ln75qdu7BfUi3UnSJZ3M45zbNE0mjqIWIc"
+    );
   });
 
   return (

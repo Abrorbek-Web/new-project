@@ -27,7 +27,7 @@ export const login = async (email: string, password: string): Promise<any> => {
 
 export const register = async (user: User): Promise<any> => {
   try {
-    const response = await axiosInstance.post(`/register/`, user);
+    const response = await axiosInstance.post(`/users/`, user);
     return response.data;
   } catch (err: any) {
     console.log(err, "Salom");

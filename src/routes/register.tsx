@@ -11,7 +11,6 @@ interface PositionOption {
   value: string;
   label: string;
 }
-const dispatch = useDispatch();
 const positionOptions: PositionOption[] = [
   { value: "Project Manager", label: "Project Manager" },
   { value: "Project Engineer Manager", label: "Project Engineer Manager" },
@@ -34,6 +33,7 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [isShowingPassword, setIsShowingPassword] = useState<boolean>(false);
 
@@ -51,9 +51,11 @@ function Register() {
 
     register(user)
       .then((res) => {
-        dispatch(signIn(res));
-        toast.success("Successfully registered!");
-        navigate("/");
+        console.log(res);
+
+        // dispatch(signIn(res));
+        // toast.success("Successfully registered!");
+        // navigate("/");
       })
       .catch((err) => {
         console.log(err);
