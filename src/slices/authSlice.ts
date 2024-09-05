@@ -40,13 +40,13 @@ const authSlice = createSlice({
       const { refresh, access, is_admin } = action.payload;
       // saveAccessToken(access);
       // saveRefreshToken(refresh);
-      saveAccessToken();
-      saveRefreshToken();
-      if (is_admin) {
-        localStorage.setItem(ADMIN_KEY, "true");
-      } else {
-        localStorage.removeItem(ADMIN_KEY);
-      }
+      // saveAccessToken();
+      // saveRefreshToken();
+      // if (is_admin) {
+      //   localStorage.setItem(ADMIN_KEY, "true");
+      // } else {
+      //   localStorage.removeItem(ADMIN_KEY);
+      // }
 
       return { accessToken: access, refreshToken: refresh, isAdmin: is_admin };
     },

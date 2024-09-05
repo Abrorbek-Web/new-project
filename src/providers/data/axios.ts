@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 axiosInstance.interceptors.response.use(
@@ -50,7 +50,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     SetResponseOk(error, false);
     return Promise.reject(error);
-  },
+  }
 );
 
 const convertAxiosToFetchResponse = (response: AxiosResponse) => {

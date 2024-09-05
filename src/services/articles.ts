@@ -27,14 +27,14 @@ const ArticleService = {
   },
 
   async getReport(): Promise<Report> {
-    saveAccessToken();
-    saveRefreshToken();
+    // saveAccessToken();
+    // saveRefreshToken();
     const { data } = await axiosInstance.get<Report>(`/report/`);
     return data;
   },
   async getReportDetail(id: number): Promise<Report> {
-    saveAccessToken();
-    saveRefreshToken();
+    // saveAccessToken();
+    // saveRefreshToken();
     const { data } = await axiosInstance.get<Report>(`/report/${id}`);
     return data;
   },

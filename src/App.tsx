@@ -2,7 +2,6 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { ErrorComponent, useNotificationProvider } from "@refinedev/antd";
 import { Authenticated, Refine, IResourceItem } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import routerProvider, {
   CatchAllNavigate,
   DocumentTitleHandler,
@@ -60,8 +59,6 @@ import {
   SalesPage,
 } from "./routes/scrumboard/sales";
 import { UpdatePasswordPage } from "./routes/update-password";
-
-import { useState, useEffect } from "react";
 
 import "./utilities/init-dayjs";
 import "@refinedev/antd/dist/reset.css";

@@ -27,9 +27,8 @@ export function Login() {
         console.log(res);
         setIsLoading(false);
         // dispatch(signIn(res));
-        ArticleService.getProject();
-        toast.success("Login successful!");
-        navigate("/");
+        // toast.success("Login successful!");
+        // navigate("/");
       })
       .catch((err) => {
         setIsLoading(false);
