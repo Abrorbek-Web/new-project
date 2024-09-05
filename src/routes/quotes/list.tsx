@@ -232,7 +232,7 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
     {
       key: detail.id,
       reportNumber: 1, // Assuming report number is static or generated
-      created: dayjs(detail.created).fromNow(),
+      created: dayjs(detail.created).format("DD.MM.YYYY"),
       responsible: detail.responsible,
       status: detail.status,
     },
