@@ -4,7 +4,6 @@ import { ThemedLayoutContextProvider } from "@refinedev/antd";
 
 import { Grid, Layout as AntdLayout } from "antd";
 
-import { GitHubBanner } from "./gh-banner";
 import { Header } from "./header";
 import { Sider } from "./sider";
 

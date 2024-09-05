@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren } from "react";
+import { useEffect, useState, type FC, type PropsWithChildren } from "react";
 
 import {
   DeleteButton,
@@ -33,6 +33,8 @@ import { currencyNumber } from "@/utilities";
 
 import { QUOTES_TABLE_QUERY } from "./queries";
 import { useParams } from "react-router-dom";
+import ArticleService from "@/services/articles";
+import { Report } from "@/services/articles";
 
 type Quote = GetFieldsFromList<QuotesTableQuery>;
 
@@ -50,10 +52,25 @@ const statusOptions: { label: string; value: QuoteStatus }[] = [
     value: "ACCEPTED",
   },
 ];
+interface RouteParams {
+  id: string;
+}
 
 export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
+  const [detail, setDetail] = useState<Report>();
   const screens = Grid.useBreakpoint();
   const { id } = useParams();
+  // console.log(typeof id);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await ArticleService.getReportDetail(Number(id));
+        setDetail(response);
+      } catch (error) {}
+    };
+    getData();
+  }, [id]);
 
   const {
     tableProps,
@@ -364,60 +381,3 @@ export const QuotesListPage: FC<PropsWithChildren> = ({ children }) => {
     </div>
   );
 };
-// const { loading: demoLoading } = useAutoLoginForDemo();
-// const [resources, setResources] = useState<IResourceItem[]>([]);
-// const [loading, setLoading] = useState(true);
-
-// useEffect(() => {
-//   const fetchResources = async () => {
-//     try {
-//       const apiData = await ArticleService.getReport();
-
-//       if (Array.isArray(apiData)) {
-//         const resourceItems: IResourceItem[] = [
-//           {
-//             name: "dashboard",
-//             list: "/",
-//             meta: {
-//               label: "Dashboard",
-//               // icon: <DashboardOutlined />,
-//             },
-//           },
-//           {
-//             name: "scrumboard",
-//             meta: {
-//               label: "Reports",
-//               // icon: <ProjectOutlined />,
-//             },
-//           },
-//           ...apiData.map((item: any) => ({
-//             name: item.id,
-//             list: `/quotes/${item.id}`,
-//             // create: item.creator || `/quotes/${item.id}/create`,
-//             // edit: item.edit || `/quotes/${item.id}/edit`,
-//             // show: item.show || `/quotes/${item.id}/show`,
-//             meta: {
-//               label: item._type,
-//               parent: "scrumboard",
-//               // icon: item.icon || <ContainerOutlined />,
-//             },
-//           })),
-//         ];
-//         setResources(resourceItems);
-//       } else {
-//         console.error("API data is not an array:", apiData);
-//       }
-//     } catch (error) {
-//       console.error("Failed to fetch resources:", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   fetchResources();
-// }, []);
-// console.log(resources);
-
-// if (demoLoading || loading) {
-//   return <FullScreenLoading />;
-// }

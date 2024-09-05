@@ -7,7 +7,7 @@ interface Article {
   body: string;
   tagList?: string[];
 }
-interface Report {
+export interface Report {
   id: number;
   created: string;
   updated: string;
@@ -29,7 +29,11 @@ const ArticleService = {
   async getReport(): Promise<Report> {
     saveAccessToken();
     saveRefreshToken();
-    const { data } = await axiosInstance.get<Report>(`/report`);
+    const { data } = await axiosInstance.get<Report>(`/report/`);
+    return data;
+  },
+  async getReportDetail(id: number): Promise<Report> {
+    const { data } = await axiosInstance.get<Report>(`/report/${id}`);
     return data;
   },
 

@@ -68,64 +68,13 @@ import "@refinedev/antd/dist/reset.css";
 import "./styles/antd.css";
 import "./styles/fc.css";
 import "./styles/index.css";
-import ArticleService from "./services/articles";
 
 const App: React.FC = () => {
-  const [resources, setResources] = useState<IResourceItem[]>([]);
   const { loading } = useAutoLoginForDemo();
 
-  useEffect(() => {
-    const fetchResources = async () => {
-      try {
-        const apiData = await ArticleService.getReport();
-
-        if (Array.isArray(apiData)) {
-          const resourceItems: IResourceItem[] = [
-            {
-              name: "dashboard",
-              list: "/",
-              meta: {
-                label: "Dashboard",
-                // icon: <DashboardOutlined />,
-              },
-            },
-            {
-              name: "scrumboard",
-              meta: {
-                label: "Reports",
-                // icon: <ProjectOutlined />,
-              },
-            },
-            ...apiData.map((item: any) => ({
-              name: item.id,
-              list: `/quotes/${item.id}`,
-              // create: item.creator || `/quotes/${item.id}/create`,
-              // edit: item.edit || `/quotes/${item.id}/edit`,
-              // show: item.show || `/quotes/${item.id}/show`,
-              meta: {
-                label: item._type,
-                parent: "scrumboard",
-              },
-            })),
-          ];
-          setResources(resourceItems);
-        } else {
-          console.error("API data is not an array:", apiData);
-        }
-      } catch (error) {
-        console.error("Failed to fetch resources:", error);
-      } finally {
-        // setLoading(false);
-      }
-    };
-
-    fetchResources();
-  }, []);
-
-  // if (loading) {
-  //   return <FullScreenLoading />;
-  // }
-  console.log(resources);
+  if (loading) {
+    return <FullScreenLoading />;
+  }
 
   return resources.length === 0 ? (
     <FullScreenLoading />
