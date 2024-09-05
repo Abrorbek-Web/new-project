@@ -3340,7 +3340,7 @@ export type QuoteSortFields =
   | "updatedAt";
 
 /** Quote status */
-export type QuoteStatus = "ACCEPTED" | "DRAFT" | "SENT";
+export type QuoteStatus = "active" | "draft" | "sent";
 
 export type QuoteStatusFilterComparison = {
   eq?: InputMaybe<QuoteStatus>;

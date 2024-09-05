@@ -4,14 +4,14 @@ const KEY_FOR_ACCESS_TOKEN = "access_token";
 export const saveAccessToken = (): void => {
   localStorage.setItem(
     KEY_FOR_ACCESS_TOKEN,
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1Njg1MDYxLCJpYXQiOjE3MjU0MjU4NjEsImp0aSI6IjFjZDA1YjEwYzk2ZjRiZWViOWEyOTE1Y2M0YWVjNDQ0IiwidXNlcl9pZCI6M30.7wT_JEeAA4NLVBTqLthWRLQ-WSCXD1vfH-CG75Ux_wA"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1NzcwMDAzLCJpYXQiOjE3MjU1MTA4MDMsImp0aSI6IjQzMzBkNWE2Njc1YTRkMWJiNDZiZmY1ODkxMjFlMzE0IiwidXNlcl9pZCI6M30.Oli92slImMEISnKgJHD0JfVzL4NcH3cyf9Fx0nd3kg8"
   );
 };
 
 export const saveRefreshToken = (): void => {
   localStorage.setItem(
     KEY_FOR_REFRESH_TOKEN,
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyODAxNzg2MSwiaWF0IjoxNzI1NDI1ODYxLCJqdGkiOiJiNGNhMWIxOGEzNGE0MzIxODI1ZmQ1MjQ5NmNmOTNiZiIsInVzZXJfaWQiOjN9.Uqcc7LATFwtF1QV7sy5m7JLGGz717p56uSykdbZxWQA"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyODEwMjgwMywiaWF0IjoxNzI1NTEwODAzLCJqdGkiOiI0ZDhmOThlNGU2NzM0N2JhODA2NTljZjZmNzExYzVlNiIsInVzZXJfaWQiOjN9.U-CYYJ7HhMwhPdSJmsxpfUqsT_u2TuHipBiwaWq0CPQ"
   );
 };
 

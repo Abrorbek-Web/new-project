@@ -10,17 +10,17 @@ import { Tag } from "antd";
 import type { QuoteStatus } from "@/graphql/schema.types";
 
 const variant: Record<QuoteStatus, { color: string; icon: ReactElement }> = {
-  DRAFT: {
+  draft: {
     color: "blue",
     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <ExpandOutlined />,
   },
-  SENT: {
+  sent: {
     color: "cyan",
     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <SendOutlined />,
   },
-  ACCEPTED: {
+  active: {
     color: "green",
     // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
     icon: <CheckCircleOutlined />,

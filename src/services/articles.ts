@@ -33,6 +33,8 @@ const ArticleService = {
     return data;
   },
   async getReportDetail(id: number): Promise<Report> {
+    saveAccessToken();
+    saveRefreshToken();
     const { data } = await axiosInstance.get<Report>(`/report/${id}`);
     return data;
   },
