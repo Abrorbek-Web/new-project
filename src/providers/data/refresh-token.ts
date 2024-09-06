@@ -31,7 +31,7 @@ export const refreshTokens = async () => {
       REFRESH_TOKEN_MUTATION,
       {
         refreshToken: currentRefreshToken,
-      },
+      }
     );
 
     localStorage.setItem("access_token", response.refreshToken.accessToken);
