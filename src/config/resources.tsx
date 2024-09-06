@@ -32,7 +32,7 @@ export const resources: IResourceItem[] = [
 
   {
     name: "scrumboard",
-    list: "/quotes/1",
+    list: "/quotes/3",
     // create: "/scrumboard/kanban/create",
     // edit: "/scrumboard/kanban/edit/:id",
     meta: {
@@ -42,7 +42,7 @@ export const resources: IResourceItem[] = [
   },
   {
     name: "task",
-    list: "/quotes/2",
+    list: "/quotes/4",
     // create: "/scrumboard/kanban/create",
     // edit: "/scrumboard/kanban/edit/:id",
     meta: {
@@ -50,66 +50,66 @@ export const resources: IResourceItem[] = [
       parent: "scrumboard",
     },
   },
-  // {
-  //   name: "tas",
-  //   list: "/quotes/3",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Bulk",
-  //     parent: "scrumboard",
-  //   },
-  // },
-  // {
-  //   name: "ta",
-  //   list: "/quotes/4",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Construction",
-  //     parent: "scrumboard",
-  //   },
-  // },
-  // {
-  //   name: "Sub",
-  //   list: "/quotes/5",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Subcontracts",
-  //     parent: "scrumboard",
-  //   },
-  // },
-  // {
-  //   name: "Man",
-  //   list: "/quotes/6",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Manpower",
-  //     parent: "scrumboard",
-  //   },
-  // },
-  // {
-  //   name: "Mach",
-  //   list: "/quotes/7",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Machinery ",
-  //     parent: "scrumboard",
-  //   },
-  // },
-  // {
-  //   name: "Bud",
-  //   list: "/quotes/8",
-  //   // create: "/scrumboard/kanban/create",
-  //   // edit: "/scrumboard/kanban/edit/:id",
-  //   meta: {
-  //     label: "Budget ",
-  //     parent: "scrumboard",
-  //   },
-  // },
+  {
+    name: "tas",
+    list: "/quotes/5",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Bulk",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "ta",
+    list: "/quotes/6",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Construction",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "Sub",
+    list: "/quotes/7",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Subcontracts",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "Man",
+    list: "/quotes/8",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Manpower",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "Mach",
+    list: "/quotes/9",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Machinery ",
+      parent: "scrumboard",
+    },
+  },
+  {
+    name: "Bud",
+    list: "/quotes/10",
+    // create: "/scrumboard/kanban/create",
+    // edit: "/scrumboard/kanban/edit/:id",
+    meta: {
+      label: "Budget ",
+      parent: "scrumboard",
+    },
+  },
 
   // {
   //   name: "taskStages",
